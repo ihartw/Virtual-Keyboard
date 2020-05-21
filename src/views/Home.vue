@@ -14,6 +14,7 @@
           Synth
         </label>
       </div>
+      
 
       <!-- Minor Keys -->
       <div class="col s3">
