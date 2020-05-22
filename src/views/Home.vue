@@ -1,7 +1,6 @@
 <template>
 <div class="container">
-  <h2 class="center-align">Virtual Keyboard</h2>
-  <div class="row"></div>
+
   <div class="keyboard-container z-depth-3">
     <div class="row"></div>
 
@@ -18,7 +17,9 @@
 
       <!-- Minor Keys -->
       <div class="col s3">
-        <div class="speaker z-depth-2"></div>
+        <div class="speaker z-depth-2" v-bind:class="{ speakerBump: speakerActive }">
+          <div class="speaker-inner"></div>
+        </div>
       </div>
       <div class="col s1">
         <div class="minor-key" v-on:mousedown=cSharp v-on:mouseup=cSharpStop v-bind:class="{ minorKeyActive: cSharpIsActive }">
@@ -62,7 +63,9 @@
         </div>
       </div>
       <div class="col s3">
-        <div class="speaker z-depth-2"></div>
+        <div class="speaker z-depth-2" v-bind:class="{ speakerBump: speakerActive }">
+          <div class="speaker-inner"></div>
+        </div>
       </div>
     </div>
 
@@ -112,6 +115,59 @@
       <div class="col s2"></div>
     </div>
   </div>
+
+  <div class="row"></div>
+
+  <!-- Controls -->
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-content">
+          <h5>Keyboard Controls</h5>
+          <div class="row">
+            <div class="col s2">
+              <p><b>D</b> = C3</p>
+            </div>
+            <div class="col s2">
+              <p><b>R</b> = C#/Db</p>
+            </div>
+            <div class="col s2">
+              <p><b>F</b> = D3</p>
+            </div>
+            <div class="col s2">
+              <p><b>G</b> = E3</p>
+            </div>
+            <div class="col s2">
+              <p><b>H</b> = F3</p>
+            </div>
+            <div class="col s2">
+              <p><b>U</b> = F#/Gb</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s2">
+              <p><b>J</b> = G3</p>
+            </div>
+            <div class="col s2">
+              <p><b>I</b> = G#/Ab</p>
+            </div>
+            <div class="col s2">
+              <p><b>K</b> = A3</p>
+            </div>
+            <div class="col s2">
+              <p><b>O</b> = A#/Bb</p>
+            </div>
+            <div class="col s2">
+              <p><b>L</b> = B3</p>
+            </div>
+            <div class="col s2">
+              <p><b>;</b> = C4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -133,11 +189,11 @@ export default {
       fSharpIsActive: false,
       gSharpIsActive: false,
       aSharpIsActive: false,
-      synthOn: false
+      synthOn: false,
+      speakerActive: false
     }
   },
   methods: {
-
     // Play audio functions
     c3: function(event) {
       var c3Audio = new Audio();
@@ -215,127 +271,165 @@ export default {
       this.c3Audio.pause();
       this.c3Audio.currentTime = 0;
       this.cIsActive = false;
+      this.speakerActive = false;
     },
     c4Stop: function(event) {
       this.c4Audio.pause();
       this.c4Audio.currentTime = 0;
       this.c4IsActive = false;
+      this.speakerActive = false;
     },
     cSharpStop: function(event) {
       this.cSharpAudio.pause();
       this.cSharpAudio.currentTime = 0;
       this.cSharpIsActive = false;
+      this.speakerActive = false;
     },
     d3Stop: function(event) {
       this.d3Audio.pause();
       this.d3Audio.currentTime = 0;
       this.dIsActive = false;
+      this.speakerActive = false;
     },
     dSharpStop: function(event) {
       this.dSharpAudio.pause();
       this.dSharpAudio.currentTime = 0;
       this.dSharpIsActive = false;
+      this.speakerActive = false;
     },
     e3Stop: function(event) {
       this.e3Audio.pause();
       this.e3Audio.currentTime = 0;
       this.eIsActive = false;
+      this.speakerActive = false;
     },
     f3Stop: function(event) {
       this.f3Audio.pause();
       this.f3Audio.currentTime = 0;
       this.fIsActive = false;
+      this.speakerActive = false;
     },
     fSharpStop: function(event) {
       this.fSharpAudio.pause();
       this.fSharpAudio.currentTime = 0;
       this.fSharpIsActive = false;
+      this.speakerActive = false;
     },
     g3Stop: function(event) {
       this.g3Audio.pause();
       this.g3Audio.currentTime = 0;
       this.gIsActive = false;
+      this.speakerActive = false;
     },
     gSharpStop: function(event) {
       this.gSharpAudio.pause();
       this.gSharpAudio.currentTime = 0;
       this.gSharpIsActive = false;
+      this.speakerActive = false;
     },
     a3Stop: function(event) {
       this.a3Audio.pause();
       this.a3Audio.currentTime = 0;
       this.aIsActive = false;
+      this.speakerActive = false;
     },
     aSharpStop: function(event) {
       this.aSharpAudio.pause();
       this.aSharpAudio.currentTime = 0;
       this.aSharpIsActive = false;
+      this.speakerActive = false;
     },
     b3Stop: function(event) {
       this.b3Audio.pause();
       this.b3Audio.currentTime = 0;
       this.bIsActive = false;
+      this.speakerActive = false;
     },
 
     toggleSynth: function(event) {
       this.synthOn = true
     }
   },
+  created: function() {
+    // window.addEventListener('resize', this.mobileTrigger);
+  },
   mounted() {
+    // window.addEventListener('resize', event => {
+    //   var intFrameWidth = window.innerWidth;
+    //   if(window.intFrameWidth === 500) {
+    //     console.log('window size is 500')
+    //     alert('window size is 500');
+    //   }
+    // });
+    // Play Audio With Keyboard
     window.addEventListener('keydown', event => {
       if (event.keyCode === 68) {
         this.c3();
         this.cIsActive = true;
+        this.speakerActive = true;
       };
       if (event.keyCode === 70) {
         this.d3();
         this.dIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 71) {
         this.e3();
         this.eIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 72) {
         this.f3();
         this.fIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 74) {
         this.g3();
         this.gIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 75) {
         this.a3();
         this.aIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 76) {
         this.b3();
         this.bIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 186) {
         this.c4();
         this.c4IsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 82) {
         this.cSharp();
         this.cSharpIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 84) {
         this.dSharp();
         this.dSharpIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 85) {
         this.fSharp();
         this.fSharpIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 73) {
         this.gSharp();
         this.gSharpIsActive = true;
+        this.speakerActive = true;
       }
       if (event.keyCode === 79) {
         this.aSharp();
         this.aSharpIsActive = true;
+        this.speakerActive = true;
       }
     });
+    // Stop Audio With Keyboard
     window.addEventListener('keyup', event => {
       if (event.keyCode === 68) {
         this.c3Stop();
@@ -382,7 +476,7 @@ export default {
 </script>
 <style>
 .keyboard-container {
-  background-color: #455a64;
+  background-color: #546e7a;
   border-radius: 50px;
   border: 5px solid;
 }
@@ -446,6 +540,21 @@ label {
   height: 100px;
   border-radius: 50px;
   margin: auto;
+  padding: 25px;
+}
+
+.speaker-inner {
+  background-color: #626262;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin: auto;
+  opacity: .1;
+}
+
+.speakerBump {
+  transform: scale(1.05);
+  transition: all .1s ease 0s;
 }
 
 .key-shadow {
