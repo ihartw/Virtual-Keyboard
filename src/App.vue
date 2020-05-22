@@ -22,5 +22,9 @@ html {
 
 h2 {
   font-family: 'Press Start 2P', cursive;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-
   <div class="keyboard-container z-depth-3">
     <div class="row"></div>
 
@@ -22,7 +21,7 @@
         </div>
       </div>
       <div class="col s1">
-        <div class="minor-key" v-on:mousedown=cSharp v-on:mouseup=cSharpStop v-bind:class="{ minorKeyActive: cSharpIsActive }">
+        <div class="minor-key" v-on:mousedown=cSharp v-on:mouseup=cSharpStop v-touch:start=cSharp v-touch:end=cSharpStop v-bind:class="{ minorKeyActive: cSharpIsActive }">
           <div class="key-shadow"></div>
           <audio v-if="synthOn === false" id="cSharpAudio" src="../assets/audio/c_sharp.mp3"></audio>
           <audio v-else id="cSharpAudio" src="../assets/audio/c_sharp_synth.mp3"></audio>
@@ -30,7 +29,7 @@
         </div>
       </div>
       <div class="col s1">
-        <div class="minor-key" v-on:mousedown=dSharp v-on:mouseup=dSharpStop v-bind:class="{ minorKeyActive: dSharpIsActive }">
+        <div class="minor-key" v-on:mousedown=dSharp v-on:mouseup=dSharpStop v-touch:start=dSharp v-touch:end=dSharpStop v-bind:class="{ minorKeyActive: dSharpIsActive }">
           <div class="key-shadow"></div>
           <audio v-if="synthOn === false" id="dSharpAudio" src="../assets/audio/d_sharp.mp3"></audio>
           <audio v-else id="dSharpAudio" src="../assets/audio/d_sharp_synth.mp3"></audio>
@@ -39,7 +38,7 @@
       </div>
       <div class="col s1"></div>
       <div class="col s1">
-        <div class="minor-key" v-on:mousedown=fSharp v-on:mouseup=fSharpStop v-bind:class="{ minorKeyActive: fSharpIsActive }">
+        <div class="minor-key" v-on:mousedown=fSharp v-on:mouseup=fSharpStop v-touch:start=fSharp v-touch:end=fSharpStop v-bind:class="{ minorKeyActive: fSharpIsActive }">
           <div class="key-shadow"></div>
           <audio v-if="synthOn === false" id="fSharpAudio" src="../assets/audio/f_sharp.mp3"></audio>
           <audio v-else id="fSharpAudio" src="../assets/audio/f_sharp_synth.mp3"></audio>
@@ -47,7 +46,7 @@
         </div>
       </div>
       <div class="col s1">
-        <div class="minor-key" v-on:mousedown=gSharp v-on:mouseup=gSharpStop v-bind:class="{ minorKeyActive: gSharpIsActive }">
+        <div class="minor-key" v-on:mousedown=gSharp v-on:mouseup=gSharpStop v-touch:start=gSharp v-touch:end=gSharpStop v-bind:class="{ minorKeyActive: gSharpIsActive }">
           <div class="key-shadow"></div>
           <audio v-if="synthOn === false" id="gSharpAudio" src="../assets/audio/g_sharp.mp3"></audio>
           <audio v-else id="gSharpAudio" src="../assets/audio/g_sharp_synth.mp3"></audio>
@@ -55,7 +54,7 @@
         </div>
       </div>
       <div class="col s1">
-        <div class="minor-key" v-on:mousedown=aSharp v-on:mouseup=aSharpStop v-bind:class="{ minorKeyActive: aSharpIsActive }">
+        <div class="minor-key" v-on:mousedown=aSharp v-on:mouseup=aSharpStop v-touch:start=aSharp v-touch:end=aSharpStop v-bind:class="{ minorKeyActive: aSharpIsActive }">
           <div class="key-shadow"></div>
           <audio v-if="synthOn === false" id="aSharpAudio" src="../assets/audio/a_sharp.mp3"></audio>
           <audio v-else id="aSharpAudio" src="../assets/audio/a_sharp_synth.mp3"></audio>
@@ -72,42 +71,42 @@
     <!-- Major Keys -->
     <div class="row">
       <div class="col s2"></div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=c3 v-on:mouseup=c3Stop v-bind:class="{ active: cIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=c3 v-on:mouseup=c3Stop v-touch:start=c3 v-touch:end=c3Stop v-bind:class="{ active: cIsActive }">
         <audio v-if="synthOn === false" id="c3Audio" src="../assets/audio/c.mp3"></audio>
         <audio v-else id="c3Audio" src="../assets/audio/c3_synth.mp3"></audio>
         <p class="major-note-label">C3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=d3 v-on:mouseup=d3Stop v-bind:class="{ active: dIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=d3 v-on:mouseup=d3Stop v-touch:start=d3 v-touch:end=d3Stop v-bind:class="{ active: dIsActive }">
         <audio v-if="synthOn === false" id="d3Audio" src="../assets/audio/d.mp3"></audio>
         <audio v-else id="d3Audio" src="../assets/audio/d_synth.mp3"></audio>
         <p class="major-note-label">D3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=e3 v-on:mouseup=e3Stop v-bind:class="{ active: eIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=e3 v-on:mouseup=e3Stop v-touch:start=e3 v-touch:end=e3Stop v-bind:class="{ active: eIsActive }">
         <audio v-if="synthOn === false" id="e3Audio" src="../assets/audio/e.mp3"></audio>
         <audio v-else id="e3Audio" src="../assets/audio/e_synth.mp3"></audio>
         <p class="major-note-label">E3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=f3 v-on:mouseup=f3Stop v-bind:class="{ active: fIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=f3 v-on:mouseup=f3Stop v-touch:start=f3 v-touch:end=f3Stop v-bind:class="{ active: fIsActive }">
         <audio v-if="synthOn === false" id="f3Audio" src="../assets/audio/f.mp3"></audio>
         <audio v-else id="f3Audio" src="../assets/audio/f_synth.mp3"></audio>
         <p class="major-note-label">F3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=g3 v-on:mouseup=g3Stop v-bind:class="{ active: gIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=g3 v-on:mouseup=g3Stop v-touch:start=g3 v-touch:end=g3Stop v-bind:class="{ active: gIsActive }">
         <audio v-if="synthOn === false" id="g3Audio" src="../assets/audio/g.mp3"></audio>
         <audio v-else id="g3Audio" src="../assets/audio/g_synth.mp3"></audio>
         <p class="major-note-label">G3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=a3 v-on:mouseup=a3Stop v-bind:class="{ active: aIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=a3 v-on:mouseup=a3Stop v-touch:start=g3 v-touch:end=g3Stop v-bind:class="{ active: aIsActive }">
         <audio v-if="synthOn === false" id="a3Audio" src="../assets/audio/a.mp3"></audio>
         <audio v-else id="a3Audio" src="../assets/audio/a_synth.mp3"></audio>
         <p class="major-note-label">A3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=b3 v-on:mouseup=b3Stop v-bind:class="{ active: bIsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=b3 v-on:mouseup=b3Stop v-touch:start=b3 v-touch:end=b3Stop v-bind:class="{ active: bIsActive }">
         <audio v-if="synthOn === false" id="b3Audio" src="../assets/audio/b.mp3"></audio>
         <audio v-else id="b3Audio" src="../assets/audio/b_synth.mp3"></audio>
         <p class="major-note-label">B3</p>
       </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=c4 v-on:mouseup=c4Stop v-bind:class="{ active: c4IsActive }">
+      <div class="col s1 major-key z-depth-2" v-on:mousedown=c4 v-on:mouseup=c4Stop v-touch:start=c4 v-touch:end=c4Stop v-bind:class="{ active: c4IsActive }">
         <audio v-if="synthOn === false" id="c4Audio" src="../assets/audio/c4.mp3"></audio>
         <audio v-else id="c4Audio" src="../assets/audio/c4_synth.mp3"></audio>
         <p class="major-note-label">C4</p>
@@ -172,6 +171,8 @@
 </template>
 
 <script>
+import Vue2TouchEvents from 'vue2-touch-events'
+
 export default {
   name: 'Home',
   data: function() {
@@ -190,7 +191,11 @@ export default {
       gSharpIsActive: false,
       aSharpIsActive: false,
       synthOn: false,
-      speakerActive: false
+      speakerActive: false,
+      window: {
+        width: 0
+      },
+      isMobile: false
     }
   },
   methods: {
@@ -198,71 +203,92 @@ export default {
     c3: function(event) {
       var c3Audio = new Audio();
       this.c3Audio = document.getElementById('c3Audio');
+      this.cIsActive = true;
+      this.speakerActive = true;
       this.c3Audio.play();
-    },
-    c3Synth: function(event) {
-      var c3SynthAudio = new Audio();
-      this.c3SynthAudio = document.getElementById('c3SynthAudio');
-      this.c3SynthAudio.play();
     },
     cSharp: function(event) {
       var cSharpAudio = new Audio();
       this.cSharpAudio = document.getElementById('cSharpAudio');
+      this.cSharpIsActive = true;
+      this.speakerActive = true;
       this.cSharpAudio.play();
     },
     d3: function(event) {
       var d3Audio = new Audio();
       this.d3Audio = document.getElementById('d3Audio');
+      this.dIsActive = true;
+      this.speakerActive = true;
       this.d3Audio.play();
     },
     dSharp: function(event) {
       var dSharpAudio = new Audio();
       this.dSharpAudio = document.getElementById('dSharpAudio');
+      this.dSharpIsActive = true;
+      this.speakerActive = true;
       this.dSharpAudio.play();
     },
     e3: function(event) {
       var e3Audio = new Audio();
       this.e3Audio = document.getElementById('e3Audio');
+      this.eIsActive = true;
+      this.speakerActive = true;
       this.e3Audio.play();
     },
     f3: function(event) {
       var f3Audio = new Audio();
       this.f3Audio = document.getElementById('f3Audio');
+      this.fIsActive = true;
+      this.speakerActive = true;
       this.f3Audio.play();
     },
     fSharp: function(event) {
       var fSharpAudio = new Audio();
       this.fSharpAudio = document.getElementById('fSharpAudio');
+      this.fSharpIsActive = true;
+      this.speakerActive = true;
       this.fSharpAudio.play();
     },
     g3: function(event) {
       var g3Audio = new Audio();
       this.g3Audio = document.getElementById('g3Audio');
+      this.gIsActive = true;
+      this.speakerActive = true;
       this.g3Audio.play();
     },
     gSharp: function(event) {
       var gSharpAudio = new Audio();
       this.gSharpAudio = document.getElementById('gSharpAudio');
+      this.gSharpIsActive = true;
+      this.speakerActive = true;
       this.gSharpAudio.play();
     },
     a3: function(event) {
       var a3Audio = new Audio();
       this.a3Audio = document.getElementById('a3Audio');
+      this.aIsActive = true;
+      this.speakerActive = true;
       this.a3Audio.play();
     },
     aSharp: function(event) {
       var aSharpAudio = new Audio();
       this.aSharpAudio = document.getElementById('aSharpAudio');
+      this.aSharpIsActive = true;
+      this.speakerActive = true;
       this.aSharpAudio.play();
     },
     b3: function(event) {
       var b3Audio = new Audio();
       this.b3Audio = document.getElementById('b3Audio');
+      this.bIsActive = true;
+      this.speakerActive = true;
       this.b3Audio.play();
     },
     c4: function(event) {
       var c4Audio = new Audio();
       this.c4Audio = document.getElementById('c4Audio');
+      this.c4IsActive = true;
+      this.speakerActive = true;
       this.c4Audio.play();
     },
 
@@ -346,91 +372,70 @@ export default {
       this.speakerActive = false;
     },
 
+    // Toggle Synth Sounds
     toggleSynth: function(event) {
       this.synthOn = true
+    },
+
+    // Tell User to Flip Screen if on Mobile Device
+    handleResize() {
+        this.window.width = window.innerWidth;
+        if(this.window.width <= 768) {
+          this.isMobile = true;
+          var toastHTML = '<span>Using mobile device? Flip your screen</span><img src="https://lh3.googleusercontent.com/proxy/VB8NP-K-y_9sDfqW2txycW-HlA-ov03zo3NHuTPs3qsbSr2BMEorcAV0ePvfTvBC8NrjqNcHu577CoWSg9ID8-I" width=100>';
+          M.toast({html: toastHTML});
+        }
     }
   },
   created: function() {
-    // window.addEventListener('resize', this.mobileTrigger);
+    // Check Users Screen Size
+    window.addEventListener('load', this.handleResize);
   },
   mounted() {
-    // window.addEventListener('resize', event => {
-    //   var intFrameWidth = window.innerWidth;
-    //   if(window.intFrameWidth === 500) {
-    //     console.log('window size is 500')
-    //     alert('window size is 500');
-    //   }
-    // });
     // Play Audio With Keyboard
-    window.addEventListener('keydown', 'touchstart', event => {
+    window.addEventListener('keydown', event => {
       if (event.keyCode === 68) {
         this.c3();
-        this.cIsActive = true;
-        this.speakerActive = true;
       };
       if (event.keyCode === 70) {
         this.d3();
-        this.dIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 71) {
         this.e3();
-        this.eIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 72) {
         this.f3();
-        this.fIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 74) {
         this.g3();
-        this.gIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 75) {
         this.a3();
-        this.aIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 76) {
         this.b3();
-        this.bIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 186) {
         this.c4();
-        this.c4IsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 82) {
         this.cSharp();
-        this.cSharpIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 84) {
         this.dSharp();
-        this.dSharpIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 85) {
         this.fSharp();
-        this.fSharpIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 73) {
         this.gSharp();
-        this.gSharpIsActive = true;
-        this.speakerActive = true;
       }
       if (event.keyCode === 79) {
         this.aSharp();
-        this.aSharpIsActive = true;
-        this.speakerActive = true;
       }
     });
     // Stop Audio With Keyboard
-    window.addEventListener('keyup', 'touchend', event => {
+    window.addEventListener('keyup', event => {
       if (event.keyCode === 68) {
         this.c3Stop();
       }
@@ -505,6 +510,10 @@ export default {
   position: relative;
   top: 145px;
   font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .minor-note-label {
@@ -512,6 +521,10 @@ export default {
   position: relative;
   bottom: 60px;
   font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .minor-key {
@@ -563,5 +576,20 @@ label {
   opacity: .2;
   height: 90px;
   border-radius: 5px;
+}
+
+.row {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 </style>
