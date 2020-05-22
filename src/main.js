@@ -13,5 +13,8 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  created: function() {
+    document.getElementById('preloader').style.display = "none";
+  },
   render: h => h(App)
 }).$mount('#app')

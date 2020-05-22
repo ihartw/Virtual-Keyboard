@@ -587,14 +587,6 @@ label {
   user-select: none;
 }
 
-.hidden {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
 @media (max-width: 768px){
   .speaker {
     width: 70px;

@@ -2,7 +2,6 @@
   <div id="app">
     <h4 class="center-align">Virtual Keyboard</h4>
     <div class="row"></div>
-    <!-- <router-view/> -->
     <div class="container">
       <div class="keyboard-container z-depth-3">
         <div class="row"></div>
@@ -122,7 +121,7 @@
       <div class="row"></div>
 
       <!-- Controls -->
-      <div v-if="isMobile === false" class="row">
+      <div v-if="isMobile === false" class="row controls">
         <div class="col s12 m12">
           <div class="card">
             <div class="card-content">
@@ -574,6 +573,7 @@ h4 {
 label {
   color: white;
   font-size: 1.2rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .speaker {
@@ -595,8 +595,8 @@ label {
 }
 
 .speakerBump {
-  transform: scale(1.05);
-  transition: all .1s ease 0s;
+  transform: scale(1.8);
+  transition: all .0s ease 0s;
 }
 
 .key-shadow {
@@ -612,14 +612,6 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.show {
-  display: block;
 }
 
 @media (max-width: 768px){
