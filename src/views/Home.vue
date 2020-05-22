@@ -123,6 +123,7 @@
       <div class="card">
         <div class="card-content">
           <h5>Keyboard Controls</h5>
+          <div class="row"></div>
           <div class="row">
             <div class="col s2">
               <p><b>D</b> = C3</p>
