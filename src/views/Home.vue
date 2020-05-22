@@ -362,7 +362,7 @@ export default {
     //   }
     // });
     // Play Audio With Keyboard
-    window.addEventListener('keydown', event => {
+    window.addEventListener('keydown', 'touchstart', event => {
       if (event.keyCode === 68) {
         this.c3();
         this.cIsActive = true;
@@ -430,7 +430,7 @@ export default {
       }
     });
     // Stop Audio With Keyboard
-    window.addEventListener('keyup', event => {
+    window.addEventListener('keyup', 'touchend', event => {
       if (event.keyCode === 68) {
         this.c3Stop();
       }
