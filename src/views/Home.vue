@@ -118,7 +118,7 @@
   <div class="row"></div>
 
   <!-- Controls -->
-  <div class="row">
+  <div v-if="isMobile === false" class="row">
     <div class="col s12 m12">
       <div class="card">
         <div class="card-content">
@@ -167,6 +167,7 @@
       </div>
     </div>
   </div>
+  <div v-else class="row"></div>
 </div>
 </template>
 
@@ -382,7 +383,7 @@ export default {
         this.window.width = window.innerWidth;
         if(this.window.width <= 768) {
           this.isMobile = true;
-          var toastHTML = '<span>Using mobile device? Flip your screen</span><img src="https://lh3.googleusercontent.com/proxy/VB8NP-K-y_9sDfqW2txycW-HlA-ov03zo3NHuTPs3qsbSr2BMEorcAV0ePvfTvBC8NrjqNcHu577CoWSg9ID8-I" width=100>';
+          var toastHTML = '<span>Flip your screen</span><img src="https://lh3.googleusercontent.com/proxy/VB8NP-K-y_9sDfqW2txycW-HlA-ov03zo3NHuTPs3qsbSr2BMEorcAV0ePvfTvBC8NrjqNcHu577CoWSg9ID8-I" width=150>';
           M.toast({html: toastHTML});
         }
     }
@@ -562,7 +563,7 @@ label {
   height: 50px;
   border-radius: 50px;
   margin: auto;
-  opacity: .1;
+  opacity: .3;
 }
 
 .speakerBump {
@@ -591,5 +592,16 @@ label {
 
 .show {
   display: block;
+}
+
+@media (max-width: 768px){
+  .speaker {
+    width: 70px;
+    height: 70px;
+  }
+  .speaker-inner {
+    width: 20px;
+    height: 20px;
+  }
 }
 </style>

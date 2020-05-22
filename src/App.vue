@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2 class="center-align">Virtual Keyboard</h2>
+    <h4 class="center-align">Virtual Keyboard</h4>
     <div class="row"></div>
     <router-view/>
   </div>
@@ -20,7 +20,7 @@ html {
   min-height: 100vh;
 }
 
-h2 {
+h4 {
   font-family: 'Press Start 2P', cursive;
   -webkit-user-select: none;
   -moz-user-select: none;

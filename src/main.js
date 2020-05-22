@@ -7,12 +7,10 @@ import router from './router'
 import store from './store'
 
 Vue.use(Vue2TouchEvents, {
-  disableClick: false,
   touchClass: '',
-  tapTolerance: 0,
-  touchHoldTolerance: 0,
+  tapTolerance: 2,
   swipeTolerance: 30,
-  longTapTimeInterval: 0
+  longTapTimeInterval: 600
 });
 
 Vue.config.productionTip = false
