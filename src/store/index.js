@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    pageColor: '#d1c4e9'
   },
   mutations: {
   },

@@ -1,182 +1,186 @@
 <template>
-<div class="container">
-  <div class="keyboard-container z-depth-3">
+  <div class="container animate__animated animate__fadeInRight">
+    <h4 class="center-align">Virtual Keyboard</h4>
     <div class="row"></div>
+    <div class="container">
+      <div class="keyboard-container z-depth-3">
+        <div class="row"></div>
 
-    <!-- Synth Toggle Button -->
-    <div class="row">
-      <div class="switch" v-on:mousedown="synthOn = !synthOn">
-        <label>
-          Piano
-          <input type="checkbox">
-          <span class="lever"></span>
-          Synth
-        </label>
-      </div>
+        <!-- Synth Toggle Button -->
+        <div class="row">
+          <div class="switch" v-on:mousedown="synthOn = !synthOn">
+            <label>
+              Piano
+              <input type="checkbox">
+              <span class="lever"></span>
+              Synth
+            </label>
+          </div>
 
-      <!-- Minor Keys -->
-      <div class="col s3">
-        <div class="speaker z-depth-2" v-bind:class="{ speakerBump: speakerActive }">
-          <div class="speaker-inner"></div>
-        </div>
-      </div>
-      <div class="col s1">
-        <div class="minor-key" v-on:mousedown=cSharp v-on:mouseup=cSharpStop v-touch:start=cSharp v-touch:end=cSharpStop v-bind:class="{ minorKeyActive: cSharpIsActive }">
-          <div class="key-shadow"></div>
-          <audio v-if="synthOn === false" id="cSharpAudio" src="../assets/audio/c_sharp.mp3"></audio>
-          <audio v-else id="cSharpAudio" src="../assets/audio/c_sharp_synth.mp3"></audio>
-          <p class="minor-note-label">C#<br>Db</p>
-        </div>
-      </div>
-      <div class="col s1">
-        <div class="minor-key" v-on:mousedown=dSharp v-on:mouseup=dSharpStop v-touch:start=dSharp v-touch:end=dSharpStop v-bind:class="{ minorKeyActive: dSharpIsActive }">
-          <div class="key-shadow"></div>
-          <audio v-if="synthOn === false" id="dSharpAudio" src="../assets/audio/d_sharp.mp3"></audio>
-          <audio v-else id="dSharpAudio" src="../assets/audio/d_sharp_synth.mp3"></audio>
-          <p class="minor-note-label">D#<br>Eb</p>
-        </div>
-      </div>
-      <div class="col s1"></div>
-      <div class="col s1">
-        <div class="minor-key" v-on:mousedown=fSharp v-on:mouseup=fSharpStop v-touch:start=fSharp v-touch:end=fSharpStop v-bind:class="{ minorKeyActive: fSharpIsActive }">
-          <div class="key-shadow"></div>
-          <audio v-if="synthOn === false" id="fSharpAudio" src="../assets/audio/f_sharp.mp3"></audio>
-          <audio v-else id="fSharpAudio" src="../assets/audio/f_sharp_synth.mp3"></audio>
-          <p class="minor-note-label">F#<br>Gb</p>
-        </div>
-      </div>
-      <div class="col s1">
-        <div class="minor-key" v-on:mousedown=gSharp v-on:mouseup=gSharpStop v-touch:start=gSharp v-touch:end=gSharpStop v-bind:class="{ minorKeyActive: gSharpIsActive }">
-          <div class="key-shadow"></div>
-          <audio v-if="synthOn === false" id="gSharpAudio" src="../assets/audio/g_sharp.mp3"></audio>
-          <audio v-else id="gSharpAudio" src="../assets/audio/g_sharp_synth.mp3"></audio>
-          <p class="minor-note-label">G#<br>Ab</p>
-        </div>
-      </div>
-      <div class="col s1">
-        <div class="minor-key" v-on:mousedown=aSharp v-on:mouseup=aSharpStop v-touch:start=aSharp v-touch:end=aSharpStop v-bind:class="{ minorKeyActive: aSharpIsActive }">
-          <div class="key-shadow"></div>
-          <audio v-if="synthOn === false" id="aSharpAudio" src="../assets/audio/a_sharp.mp3"></audio>
-          <audio v-else id="aSharpAudio" src="../assets/audio/a_sharp_synth.mp3"></audio>
-          <p class="minor-note-label">A#<br>Bb</p>
-        </div>
-      </div>
-      <div class="col s3">
-        <div class="speaker z-depth-2" v-bind:class="{ speakerBump: speakerActive }">
-          <div class="speaker-inner"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Major Keys -->
-    <div class="row">
-      <div class="col s2"></div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=c3 v-on:mouseup=c3Stop v-touch:start=c3 v-touch:end=c3Stop v-bind:class="{ active: cIsActive }">
-        <audio v-if="synthOn === false" id="c3Audio" src="../assets/audio/c.mp3"></audio>
-        <audio v-else id="c3Audio" src="../assets/audio/c3_synth.mp3"></audio>
-        <p class="major-note-label">C3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=d3 v-on:mouseup=d3Stop v-touch:start=d3 v-touch:end=d3Stop v-bind:class="{ active: dIsActive }">
-        <audio v-if="synthOn === false" id="d3Audio" src="../assets/audio/d.mp3"></audio>
-        <audio v-else id="d3Audio" src="../assets/audio/d_synth.mp3"></audio>
-        <p class="major-note-label">D3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=e3 v-on:mouseup=e3Stop v-touch:start=e3 v-touch:end=e3Stop v-bind:class="{ active: eIsActive }">
-        <audio v-if="synthOn === false" id="e3Audio" src="../assets/audio/e.mp3"></audio>
-        <audio v-else id="e3Audio" src="../assets/audio/e_synth.mp3"></audio>
-        <p class="major-note-label">E3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=f3 v-on:mouseup=f3Stop v-touch:start=f3 v-touch:end=f3Stop v-bind:class="{ active: fIsActive }">
-        <audio v-if="synthOn === false" id="f3Audio" src="../assets/audio/f.mp3"></audio>
-        <audio v-else id="f3Audio" src="../assets/audio/f_synth.mp3"></audio>
-        <p class="major-note-label">F3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=g3 v-on:mouseup=g3Stop v-touch:start=g3 v-touch:end=g3Stop v-bind:class="{ active: gIsActive }">
-        <audio v-if="synthOn === false" id="g3Audio" src="../assets/audio/g.mp3"></audio>
-        <audio v-else id="g3Audio" src="../assets/audio/g_synth.mp3"></audio>
-        <p class="major-note-label">G3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=a3 v-on:mouseup=a3Stop v-touch:start=g3 v-touch:end=g3Stop v-bind:class="{ active: aIsActive }">
-        <audio v-if="synthOn === false" id="a3Audio" src="../assets/audio/a.mp3"></audio>
-        <audio v-else id="a3Audio" src="../assets/audio/a_synth.mp3"></audio>
-        <p class="major-note-label">A3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=b3 v-on:mouseup=b3Stop v-touch:start=b3 v-touch:end=b3Stop v-bind:class="{ active: bIsActive }">
-        <audio v-if="synthOn === false" id="b3Audio" src="../assets/audio/b.mp3"></audio>
-        <audio v-else id="b3Audio" src="../assets/audio/b_synth.mp3"></audio>
-        <p class="major-note-label">B3</p>
-      </div>
-      <div class="col s1 major-key z-depth-2" v-on:mousedown=c4 v-on:mouseup=c4Stop v-touch:start=c4 v-touch:end=c4Stop v-bind:class="{ active: c4IsActive }">
-        <audio v-if="synthOn === false" id="c4Audio" src="../assets/audio/c4.mp3"></audio>
-        <audio v-else id="c4Audio" src="../assets/audio/c4_synth.mp3"></audio>
-        <p class="major-note-label">C4</p>
-      </div>
-      <div class="col s2"></div>
-    </div>
-  </div>
-
-  <div class="row"></div>
-
-  <!-- Controls -->
-  <div v-if="isMobile === false" class="row">
-    <div class="col s12 m12">
-      <div class="card">
-        <div class="card-content">
-          <h5>Keyboard Controls</h5>
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s2">
-              <p><b>D</b> = C3</p>
-            </div>
-            <div class="col s2">
-              <p><b>R</b> = C#/Db</p>
-            </div>
-            <div class="col s2">
-              <p><b>F</b> = D3</p>
-            </div>
-            <div class="col s2">
-              <p><b>G</b> = E3</p>
-            </div>
-            <div class="col s2">
-              <p><b>H</b> = F3</p>
-            </div>
-            <div class="col s2">
-              <p><b>U</b> = F#/Gb</p>
+          <!-- Minor Keys -->
+          <div class="col s3">
+            <div class="speaker z-depth-2" v-bind:class="{ speakerBump: speakerActive }">
+              <div class="speaker-inner"></div>
             </div>
           </div>
-          <div class="row">
-            <div class="col s2">
-              <p><b>J</b> = G3</p>
+          <div class="col s1">
+            <div class="minor-key" v-on:mousedown=cSharp v-on:mouseup=cSharpStop v-touch:start=cSharp v-touch:end=cSharpStop v-bind:class="{ minorKeyActive: cSharpIsActive }">
+              <div class="key-shadow"></div>
+              <audio v-if="synthOn === false" id="cSharpAudio" src="../assets/audio/c_sharp.mp3"></audio>
+              <audio v-else id="cSharpAudio" src="../assets/audio/c_sharp_synth.mp3"></audio>
+              <p class="minor-note-label">C#<br>Db</p>
             </div>
-            <div class="col s2">
-              <p><b>I</b> = G#/Ab</p>
+          </div>
+          <div class="col s1">
+            <div class="minor-key" v-on:mousedown=dSharp v-on:mouseup=dSharpStop v-touch:start=dSharp v-touch:end=dSharpStop v-bind:class="{ minorKeyActive: dSharpIsActive }">
+              <div class="key-shadow"></div>
+              <audio v-if="synthOn === false" id="dSharpAudio" src="../assets/audio/d_sharp.mp3"></audio>
+              <audio v-else id="dSharpAudio" src="../assets/audio/d_sharp_synth.mp3"></audio>
+              <p class="minor-note-label">D#<br>Eb</p>
             </div>
-            <div class="col s2">
-              <p><b>K</b> = A3</p>
+          </div>
+          <div class="col s1"></div>
+          <div class="col s1">
+            <div class="minor-key" v-on:mousedown=fSharp v-on:mouseup=fSharpStop v-touch:start=fSharp v-touch:end=fSharpStop v-bind:class="{ minorKeyActive: fSharpIsActive }">
+              <div class="key-shadow"></div>
+              <audio v-if="synthOn === false" id="fSharpAudio" src="../assets/audio/f_sharp.mp3"></audio>
+              <audio v-else id="fSharpAudio" src="../assets/audio/f_sharp_synth.mp3"></audio>
+              <p class="minor-note-label">F#<br>Gb</p>
             </div>
-            <div class="col s2">
-              <p><b>O</b> = A#/Bb</p>
+          </div>
+          <div class="col s1">
+            <div class="minor-key" v-on:mousedown=gSharp v-on:mouseup=gSharpStop v-touch:start=gSharp v-touch:end=gSharpStop v-bind:class="{ minorKeyActive: gSharpIsActive }">
+              <div class="key-shadow"></div>
+              <audio v-if="synthOn === false" id="gSharpAudio" src="../assets/audio/g_sharp.mp3"></audio>
+              <audio v-else id="gSharpAudio" src="../assets/audio/g_sharp_synth.mp3"></audio>
+              <p class="minor-note-label">G#<br>Ab</p>
             </div>
-            <div class="col s2">
-              <p><b>L</b> = B3</p>
+          </div>
+          <div class="col s1">
+            <div class="minor-key" v-on:mousedown=aSharp v-on:mouseup=aSharpStop v-touch:start=aSharp v-touch:end=aSharpStop v-bind:class="{ minorKeyActive: aSharpIsActive }">
+              <div class="key-shadow"></div>
+              <audio v-if="synthOn === false" id="aSharpAudio" src="../assets/audio/a_sharp.mp3"></audio>
+              <audio v-else id="aSharpAudio" src="../assets/audio/a_sharp_synth.mp3"></audio>
+              <p class="minor-note-label">A#<br>Bb</p>
             </div>
-            <div class="col s2">
-              <p><b>;</b> = C4</p>
+          </div>
+          <div class="col s3">
+            <div class="speaker z-depth-2" v-bind:class="{ speakerBump: speakerActive }">
+              <div class="speaker-inner"></div>
             </div>
           </div>
         </div>
+
+        <!-- Major Keys -->
+        <div class="row">
+          <div class="col s2"></div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=c3 v-on:mouseup=c3Stop v-touch:start=c3 v-touch:end=c3Stop v-bind:class="{ active: cIsActive }">
+            <audio v-if="synthOn === false" id="c3Audio" src="../assets/audio/c.mp3"></audio>
+            <audio v-else id="c3Audio" src="../assets/audio/c3_synth.mp3"></audio>
+            <p class="major-note-label">C3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=d3 v-on:mouseup=d3Stop v-touch:start=d3 v-touch:end=d3Stop v-bind:class="{ active: dIsActive }">
+            <audio v-if="synthOn === false" id="d3Audio" src="../assets/audio/d.mp3"></audio>
+            <audio v-else id="d3Audio" src="../assets/audio/d_synth.mp3"></audio>
+            <p class="major-note-label">D3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=e3 v-on:mouseup=e3Stop v-touch:start=e3 v-touch:end=e3Stop v-bind:class="{ active: eIsActive }">
+            <audio v-if="synthOn === false" id="e3Audio" src="../assets/audio/e.mp3"></audio>
+            <audio v-else id="e3Audio" src="../assets/audio/e_synth.mp3"></audio>
+            <p class="major-note-label">E3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=f3 v-on:mouseup=f3Stop v-touch:start=f3 v-touch:end=f3Stop v-bind:class="{ active: fIsActive }">
+            <audio v-if="synthOn === false" id="f3Audio" src="../assets/audio/f.mp3"></audio>
+            <audio v-else id="f3Audio" src="../assets/audio/f_synth.mp3"></audio>
+            <p class="major-note-label">F3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=g3 v-on:mouseup=g3Stop v-touch:start=g3 v-touch:end=g3Stop v-bind:class="{ active: gIsActive }">
+            <audio v-if="synthOn === false" id="g3Audio" src="../assets/audio/g.mp3"></audio>
+            <audio v-else id="g3Audio" src="../assets/audio/g_synth.mp3"></audio>
+            <p class="major-note-label">G3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=a3 v-on:mouseup=a3Stop v-touch:start=g3 v-touch:end=g3Stop v-bind:class="{ active: aIsActive }">
+            <audio v-if="synthOn === false" id="a3Audio" src="../assets/audio/a.mp3"></audio>
+            <audio v-else id="a3Audio" src="../assets/audio/a_synth.mp3"></audio>
+            <p class="major-note-label">A3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=b3 v-on:mouseup=b3Stop v-touch:start=b3 v-touch:end=b3Stop v-bind:class="{ active: bIsActive }">
+            <audio v-if="synthOn === false" id="b3Audio" src="../assets/audio/b.mp3"></audio>
+            <audio v-else id="b3Audio" src="../assets/audio/b_synth.mp3"></audio>
+            <p class="major-note-label">B3</p>
+          </div>
+          <div class="col s1 major-key z-depth-2" v-on:mousedown=c4 v-on:mouseup=c4Stop v-touch:start=c4 v-touch:end=c4Stop v-bind:class="{ active: c4IsActive }">
+            <audio v-if="synthOn === false" id="c4Audio" src="../assets/audio/c4.mp3"></audio>
+            <audio v-else id="c4Audio" src="../assets/audio/c4_synth.mp3"></audio>
+            <p class="major-note-label">C4</p>
+          </div>
+          <div class="col s2"></div>
+        </div>
       </div>
+
+      <div class="row"></div>
+
+      <!-- Controls -->
+      <div v-if="isMobile === false" class="row controls">
+        <div class="col s12 m12">
+          <div class="card">
+            <div class="card-content">
+              <h5>Keyboard Controls</h5>
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s2">
+                  <p><b>D</b> = C3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>R</b> = C#/Db</p>
+                </div>
+                <div class="col s2">
+                  <p><b>F</b> = D3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>G</b> = E3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>H</b> = F3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>U</b> = F#/Gb</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s2">
+                  <p><b>J</b> = G3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>I</b> = G#/Ab</p>
+                </div>
+                <div class="col s2">
+                  <p><b>K</b> = A3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>O</b> = A#/Bb</p>
+                </div>
+                <div class="col s2">
+                  <p><b>L</b> = B3</p>
+                </div>
+                <div class="col s2">
+                  <p><b>;</b> = C4</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="row"></div>
     </div>
   </div>
-  <div v-else class="row"></div>
-</div>
 </template>
 
 <script>
 import Vue2TouchEvents from 'vue2-touch-events'
 
 export default {
-  name: 'Home',
+  name: 'Keyboard',
   data: function() {
     return {
       cIsActive: false,
@@ -197,10 +201,14 @@ export default {
       window: {
         width: 0
       },
-      isMobile: false
+      isMobile: false,
+      stringPlucked: false
     }
   },
   methods: {
+    pluckString: function(event) {
+      this.stringPlucked = true;
+    },
     // Play audio functions
     c3: function(event) {
       var c3Audio = new Audio();
@@ -379,6 +387,10 @@ export default {
       this.synthOn = true
     },
 
+    moveString: function(event) {
+      this.wobble = true
+    },
+
     // Tell User to Flip Screen if on Mobile Device
     handleResize() {
         this.window.width = window.innerWidth;
@@ -481,6 +493,7 @@ export default {
   }
 }
 </script>
+
 <style>
 .keyboard-container {
   background-color: #546e7a;
@@ -547,6 +560,7 @@ export default {
 label {
   color: white;
   font-size: 1.2rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .speaker {
@@ -568,8 +582,8 @@ label {
 }
 
 .speakerBump {
-  transform: scale(1.05);
-  transition: all .1s ease 0s;
+  transform: scale(1.2);
+  transition: all .0s ease 0s;
 }
 
 .key-shadow {
@@ -597,4 +611,9 @@ label {
     height: 20px;
   }
 }
+
+.animate__animated.animate__fadeInRight {
+  --animate-duration: .5s;
+}
+
 </style>
