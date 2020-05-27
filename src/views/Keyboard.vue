@@ -1,5 +1,5 @@
 <template>
-  <div class="container animate__animated animate__fadeInRight">
+  <div class="container animate__animated animate__fadeInLeft">
     <h4 class="center-align">Virtual Keyboard</h4>
     <div class="row"></div>
     <div class="container">
@@ -201,14 +201,10 @@ export default {
       window: {
         width: 0
       },
-      isMobile: false,
-      stringPlucked: false
+      isMobile: false
     }
   },
   methods: {
-    pluckString: function(event) {
-      this.stringPlucked = true;
-    },
     // Play audio functions
     c3: function(event) {
       var c3Audio = new Audio();
@@ -386,11 +382,6 @@ export default {
     toggleSynth: function(event) {
       this.synthOn = true
     },
-
-    moveString: function(event) {
-      this.wobble = true
-    },
-
     // Tell User to Flip Screen if on Mobile Device
     handleResize() {
         this.window.width = window.innerWidth;
@@ -612,7 +603,7 @@ label {
   }
 }
 
-.animate__animated.animate__fadeInRight {
+.animate__animated.animate__fadeInLeft {
   --animate-duration: .5s;
 }
 

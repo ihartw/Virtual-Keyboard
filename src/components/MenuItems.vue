@@ -27,12 +27,10 @@ export default {
   },
   methods: {
     bgGuitarColorChange: function(event) {
-      this.$store.state.pageColor = '#bbdefb';
-      console.log('guitar clicked');
+      this.$store.state.pageColor = '#90caf9';
     },
     bgKeyboardColorChange: function(event) {
       this.$store.state.pageColor = '#d1c4e9';
-      console.log('guitar clicked');
     }
   },
   created: function() {
