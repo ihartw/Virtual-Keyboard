@@ -387,8 +387,11 @@ export default {
         this.window.width = window.innerWidth;
         if(this.window.width <= 768) {
           this.isMobile = true;
-          var toastHTML = '<span>Flip your screen</span><img src="https://lh3.googleusercontent.com/proxy/VB8NP-K-y_9sDfqW2txycW-HlA-ov03zo3NHuTPs3qsbSr2BMEorcAV0ePvfTvBC8NrjqNcHu577CoWSg9ID8-I" width=150>';
-          M.toast({html: toastHTML});
+          var toastHTML = '<span class="mobile-toast">Mobile device?&nbsp; Flip your screen</span>';
+          M.toast({
+            html: toastHTML,
+            displayLength: 5000
+          });
         }
     }
   },
@@ -590,6 +593,10 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.mobile-toast {
+  padding: 20px;
 }
 
 @media (max-width: 768px){
