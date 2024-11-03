@@ -30,8 +30,8 @@ export default {
 
 <style>
 #app {
-   font-family: "Roboto Mono", monospace !important;
-   font-optical-sizing: auto;
+   font-family: "Lekton", serif;
+   font-weight: 700;
    font-style: normal;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;

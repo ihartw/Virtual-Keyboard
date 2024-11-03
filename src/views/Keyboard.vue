@@ -136,7 +136,7 @@
          <!-- Controls -->
          <div v-if="isMobile === false" class="row controls">
             <div class="col s12 m12">
-               <div class="card">
+               <div class="card deep-purple lighten-3">
                   <div class="card-content">
                      <h5>Keyboard Controls</h5>
                      <div class="row"></div>
@@ -506,6 +506,10 @@ export default {
    background-color: #546e7a;
    border-radius: 50px;
    border: 5px solid;
+}
+
+.card {
+   border-radius: 5px;
 }
 
 .active {
